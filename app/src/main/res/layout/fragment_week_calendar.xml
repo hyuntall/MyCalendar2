@@ -80,7 +80,7 @@
                 android:textSize="15dp" />
 
         </LinearLayout>
-        <!--주를 나타내기 위한 그리드뷰-->
+
         <LinearLayout
             android:gravity="left"
             android:layout_width="wrap_content"
@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
+            <!--주를 나타내기 위한 그리드뷰-->
             <GridView
                 android:layout_marginLeft="20dp"
                 android:drawSelectorOnTop="true"
@@ -112,8 +112,10 @@
                         android:id="@+id/listView"
                         android:layout_width="20dp"
                         android:layout_height="match_parent"/>
+                    <!--빈 공백으로 구성된 그리드뷰-->
+                    <!-- 검은색 격자를 표시하기 위해 배경을 검은색으로 설정하였다-->
+                    <!--클릭 시 drawale 레이아웃에서 지정해둔 cyan색이 된다.-->
                     <GridView
-
                         android:id="@+id/gridview3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
