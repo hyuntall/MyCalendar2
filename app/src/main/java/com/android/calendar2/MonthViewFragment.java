@@ -65,23 +65,24 @@ public class MonthViewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // 뷰페이저를 선언하여 프래그먼트에 연결시킨다.
         View rootView = inflater.inflate(R.layout.fragment_month_view, container, false);
+
         ViewPager2 vpPager = rootView.findViewById(R.id.vpPager);
         FragmentStateAdapter adapter = new MonthCalendarAdapter(this);
         vpPager.setAdapter(adapter);
+        //vpPager.setCurrentItem(50);
+
         vpPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-                // 뷰 페이저의 각 페이지별로 년도, 월을 달리하여 액션바에 표시하는 코드이다.
-                // 월에는 모듈러를 사용하여 12월이 지나면 1월이 되도록 설정하였고
-                // 해당 월과 페이지의 position을 더한 값을 12로 나누어 년도를 표현하였다.
                 int year = Calendar.getInstance().get(Calendar.YEAR);
                 int month = Calendar.getInstance().get(Calendar.MONTH)+1;
-                int ym = ((Calendar.getInstance().get(Calendar.MONTH)+position))/12;
+                if (month == 12)
+                    year++;
                 month = (Calendar.getInstance().get(Calendar.MONTH)+position)%12+1;
+
                 ActionBar ab = ((MainActivity)getActivity()).getSupportActionBar();
-                ab.setTitle((year+ym)+ "년 " + month + "월");
+                ab.setTitle(year + "년 " + month + "월");
             }
         });
         return rootView;
