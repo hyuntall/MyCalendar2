@@ -80,7 +80,6 @@ public class MonthViewFragment extends Fragment {
                 int month = Calendar.getInstance().get(Calendar.MONTH)+1;
                 int ym = ((Calendar.getInstance().get(Calendar.MONTH)+position))/12;
                 month = (Calendar.getInstance().get(Calendar.MONTH)+position)%12+1;
-                System.out.println(year + ym);
                 ActionBar ab = ((MainActivity)getActivity()).getSupportActionBar();
                 ab.setTitle((year+ym)+ "년 " + month + "월");
             }

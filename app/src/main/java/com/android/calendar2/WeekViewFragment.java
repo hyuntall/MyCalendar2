@@ -67,25 +67,23 @@ public class WeekViewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // 뷰페이저를 선언하여 프래그먼트에 연결시킨다.
         View rootView = inflater.inflate(R.layout.fragment_week_view, container, false);
-
         ViewPager2 vpPager = rootView.findViewById(R.id.vpPager2);
         FragmentStateAdapter adapter = new WeekCalendarAdapter(this);
         vpPager.setAdapter(adapter);
-        //vpPager.setCurrentItem(50);
-
         vpPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
+                // 뷰페이저의 각 페이지별로 년도, 월을 달리하여 액션바에 표시한다.
+                // 모듈러를 사용하여 각각 year와 month를 표현하였다.
                 int year = Calendar.getInstance().get(Calendar.YEAR);
-                int month = Calendar.getInstance().get(Calendar.MONTH)+1;
+                int month = Calendar.getInstance().get(Calendar.MONTH)%12;
                 int dm = position*7/42;
-
-                if (month == 12)
-                    year++;
-
+                int realMonth = (month+dm)%12+1;
+                int ym = (month+dm)/12;
                 ActionBar ab = ((MainActivity)getActivity()).getSupportActionBar();
-                ab.setTitle(year + "년 " + (month+dm) + "월");
+                ab.setTitle((year+ym) + "년 " + realMonth + "월");
             }
         });
         return rootView;

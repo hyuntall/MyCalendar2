@@ -77,6 +77,8 @@
 
     </LinearLayout>
     <!--달력을 나타내기 위한 그리드뷰-->
+    <!--보라색의 격자를 표시하기 위해 그리드뷰의 배경을 보라색으로 설정하고, 각 셀마다 2dp씩 공간을 주었다.-->
+    <!--그리드뷰의 아이템을 클릭하면 drawble 레이아웃에서 지정해둔 cyan색으 된다.-->
     <GridView
         android:drawSelectorOnTop="true"
         android:background="@color/purple_500"
